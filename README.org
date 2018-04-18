@@ -1,0 +1,8 @@
+* OS excercise
+
+** Run a program
+
+#+BEGIN_SRC bash
+clang fork_process.c -o program
+./program
+#+END_SRC
