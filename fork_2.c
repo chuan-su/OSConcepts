@@ -4,6 +4,8 @@
 
 int main() {
 
+  int value = 5; // what will the value become?
+
   pid_t pid;
 
   /* fork a child process */
@@ -15,13 +17,16 @@ int main() {
     return 1;
   }
   else if (pid == 0) { /* child process */
-    execlp("/bin/ls", "ls", NULL);
+    /* Child process consists of a copy of the address space of the original/parent process. */
+    value = value + 5;
+    return 0;
   }
   else { /* parent process */
     /* parent will wait fot the child to complete */
     wait(NULL);
-    printf("Child Complete");
+    /* The result is still 5 as the child updates its copy of value. When control */
+    /* returns to the parent, its value remains at 5 */
+    printf("PARENT: Value = %d\n", value);
+    return 0;
   }
-
-  return 0;
 }
