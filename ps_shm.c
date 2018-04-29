@@ -12,7 +12,7 @@ int main() {
   const char * message_0 = "Hello";
   const char * message_1 = "Process!";
 
-  int pid;
+  pid_t pid;
 
   int shm_fd;
   void *ptr;
